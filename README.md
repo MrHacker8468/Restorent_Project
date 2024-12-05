@@ -55,7 +55,7 @@ restro-app/
 ![RestroApp Architecture](https://github.com/MrHacker8468/Restorent_Project/blob/main/architecture/RestroApp.png)
 
 ## Video Overview of the Project
-[![RestroApp Overview](https://github.com/MrHacker8468/Restorent_Project/blob/main/Video/Project%20Overview.mp4)]
+[![RestroApp Overview]([https://github.com/MrHacker8468/Restorent_Project/blob/main/Video/Project%20Overview.mp4](https://drive.google.com/file/d/1m2-iOpUkEhZOgK1_UpmNrCaUmduRW6-A/view?usp=drive_link))]
 
 ## 🧪 Running Tests
  ### backend
