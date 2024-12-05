@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Eye, EyeOff } from 'lucide-react';
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -20,6 +21,8 @@ export default function Register() {
   const [isLoading, setIsLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState(null);
   const [error, setError] = useState(null);
+  const [showPassword1, setShowPassword1] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -44,6 +47,14 @@ export default function Register() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const togglePasswordVisibility1 = () => {
+    setShowPassword1(!showPassword1);
+  };
+
+  const togglePasswordVisibility2 = () => {
+    setShowPassword2(!showPassword2);
   };
 
   return (
@@ -97,30 +108,58 @@ export default function Register() {
             <label htmlFor="password_1" className="block text-sm font-medium">
               Password
             </label>
-            <input
-              type="password"
-              name="password_1"
-              id="password_1"
-              value={formData.password_1}
-              onChange={handleChange}
-              className="w-full mt-1 px-4 py-2 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
-              required
-            />
+            <div className="relative">
+              <input
+                type={showPassword1 ? "text" : "password"}
+                name="password_1"
+                id="password_1"
+                value={formData.password_1}
+                onChange={handleChange}
+                className="w-full mt-1 px-4 py-2 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 pr-10"
+                required
+              />
+              <button
+                type="button"
+                onClick={togglePasswordVisibility1}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-gray-800 focus:outline-none"
+                aria-label={showPassword1 ? "Hide password" : "Show password"}
+              >
+                {showPassword1 ? (
+                  <EyeOff size={20} />
+                ) : (
+                  <Eye size={20} />
+                )}
+              </button>
+            </div>
           </div>
 
           <div>
             <label htmlFor="password_2" className="block text-sm font-medium">
               Confirm Password
             </label>
-            <input
-              type="password"
-              name="password_2"
-              id="password_2"
-              value={formData.password_2}
-              onChange={handleChange}
-              className="w-full mt-1 px-4 py-2 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
-              required
-            />
+            <div className="relative">
+              <input
+                type={showPassword2 ? "text" : "password"}
+                name="password_2"
+                id="password_2"
+                value={formData.password_2}
+                onChange={handleChange}
+                className="w-full mt-1 px-4 py-2 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 pr-10"
+                required
+              />
+              <button
+                type="button"
+                onClick={togglePasswordVisibility2}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-gray-800 focus:outline-none"
+                aria-label={showPassword2 ? "Hide password" : "Show password"}
+              >
+                {showPassword2 ? (
+                  <EyeOff size={20} />
+                ) : (
+                  <Eye size={20} />
+                )}
+              </button>
+            </div>
           </div>
 
           <button
